@@ -11,21 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123013246) do
+ActiveRecord::Schema.define(version: 20150123052529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "products", force: :cascade do |t|
+  create_table "product_translations", force: :cascade do |t|
+    t.integer  "product_id",  null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "name"
-    t.integer  "category_id"
-    t.decimal  "price"
-    t.decimal  "price_6"
-    t.decimal  "price_12"
-    t.string   "image_url"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  end
+
+  add_index "product_translations", ["locale"], name: "index_product_translations_on_locale", using: :btree
+  add_index "product_translations", ["product_id"], name: "index_product_translations_on_product_id", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text   "description"
   end
 
 end

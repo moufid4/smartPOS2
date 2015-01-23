@@ -42,6 +42,7 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem 'globalize'
+  gem "globalize", github: "ncri/globalize" # for Rails 4.2
+  gem 'paper_trail'
 end
 

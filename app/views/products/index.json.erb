@@ -1,1 +1,6 @@
-<%= @products.JSON.parse string %>
+{
+<% @products.each do |p| %>
+    <%= p.name.to_json.html_safe %>,
+    
+    <%end%>
+}

@@ -1,9 +1,12 @@
 class ProductsController < ApplicationController
+respond_to :html, :json
+
   def index
     @products = Product.all
-    # respond_to do |format|
-    #   format.json { render json: @products}
-    # end
+    respond_with(@users) do |format|
+      format.json {render :json => @products.as_json}
+      format.html
+    end
   end
 
   def new
